@@ -69,7 +69,7 @@ struct BookCardView: View {
             } placeholder: {
                 Color.gray.opacity(0.3)
             }
-            .frame(height: 200)
+            .frame(height: 400)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .padding(.top, 10)
 
@@ -126,7 +126,7 @@ struct BookCardView: View {
                     .tint(.white)
                 }
                 .buttonStyle(.borderedProminent)
-                .padding(.top, 5) // Fixed missing dot
+                .padding(.top, 5)
             }
         }
         .foregroundStyle(.white)
@@ -135,7 +135,7 @@ struct BookCardView: View {
         .frame(maxWidth: .infinity)
         .background {
             Rectangle()
-                .fill(book.color)  // Ensure it's properly assigned as LinearGradient
+                .fill(book.color)
         }
         .clipShape(
             UnevenRoundedRectangle(topLeadingRadius: 15, bottomLeadingRadius: 0, bottomTrailingRadius: 0, topTrailingRadius: 15)
@@ -229,7 +229,7 @@ struct BookCardView: View {
 
 #Preview {
     GeometryReader { geometry in
-        BookCardView(book: books[1], size: geometry.size, isScrolled: {_ in })
+        BookCardView(book: sampleBook.first!, size: geometry.size, isScrolled: {_ in })
             .padding(.horizontal, 15)
     }
     .background(.gray.opacity(0.15))

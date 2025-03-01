@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SearchView: View {
-    @State private var activeID: UUID? = books.first?.id
-    @State private var scrollPosition: ScrollPosition = .init(idType: UUID.self)
+    var books: [Book]
+
+    @State private var activeID: Int64? = nil
+    @State private var scrollPosition: ScrollPosition = .init(idType: Int64.self)
     @State private var isAnyBookCardScrolled: Bool = false
     
     var body: some View {
@@ -31,7 +33,7 @@ struct SearchView: View {
             .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
             .scrollPosition($scrollPosition)
             .scrollDisabled(isAnyBookCardScrolled)
-            .onChange(of: scrollPosition.viewID(type: UUID.self)) { oldValue, newValue in
+            .onChange(of: scrollPosition.viewID(type: Int64.self)) { oldValue, newValue in
                 activeID = newValue
             }
             .scrollIndicators(.hidden)
